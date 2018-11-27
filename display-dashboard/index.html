@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+      
+   <title>Patient Review Dashboard</title>
+</head>
+
+<body>
+  <div class= "background">
+    <div class="container">
+    <div class="header">
+        <h1> Patient Review Dashboard</h1>
+        <h2> Anxiety Medication</h2> <br>
+        <p> What are patients talking about, and what are their perceptions?</p>
+        <p> This dashboard includes data from 500 anonymised patient reviews (source: drugs.com), for two frequently prescribed anxiety medications: Lorazepam and Buspirone.</p>
+        <br>
+    </div>
+    <!-- Control buttons -->
+    <div id="myBtnContainer">
+        <button class="btn active" onclick="filterSelection('all')"> All drugs</button>
+        <button class="btn" onclick="filterSelection('buspirone')"> Buspirone</button>
+        <button class="btn" onclick="filterSelection('lorazepam')"> Lorazepam</button>
+    </div>
+    <br>
+    <div class="content-container">
+        <div class="filterDiv buspirone frequency-graph">
+          <h3> Buspirone </h3>
+          <p> This medication is used to treat anxiety. It may help you think more clearly, relax, worry less, and take part in everyday life. It may also help you to feel less jittery and irritable, and may control symptoms such as trouble sleeping, sweating, and pounding heartbeat. Buspirone is a medication for anxiety (anxiolytic) that works by affecting certain natural substances in the brain (neurotransmitters). (Source: webmd)</p>
+            <a href="https://plot.ly/~bethhaworth2180ca/1/?share_key=RD9fN3CI2OeI8fbgegU6zq" target="_blank" title="Buspirone" style="display: block; text-align: center;"><img src="https://plot.ly/~bethhaworth2180ca/1.png?share_key=RD9fN3CI2OeI8fbgegU6zq" alt="Buspirone" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+            <script data-plotly="bethhaworth2180ca:1" sharekey-plotly="RD9fN3CI2OeI8fbgegU6zq" src="https://plot.ly/embed.js" async></script>
+            <p>Graph demonstrating the most frequently used terms in the Buspirone data set, after cleaning and preprocessing.</p>
+        </div>   
+        <div class="filterDiv buspirone frequency-cloud">
+            <div class="cloud"><img src="images/buspi.png" style= "max-width: 400px;"></div>
+            <p>Cloud demonstrating the most frequently used terms by Buspirone patients.</p>
+        </div>                 
+        <div class="filterDiv lorazepam frequency-graph">
+            <h3> Lorazepam </h3>
+            <p> This medication is used to treat anxiety. Lorazepam belongs to a class of drugs known as benzodiazepines which act on the brain and nerves (central nervous system) to produce a calming effect. This drug works by enhancing the effects of a certain natural chemical in the body (GABA). (Source: webmd)</p>
+          <a href="https://plot.ly/~bethhaworth2180ca/3/?share_key=lRgCTYerR9FR3mYe2Sa2aU" target="_blank" title="Lorazepam" style="display: block; text-align: center;"><img src="https://plot.ly/~bethhaworth2180ca/3.png?share_key=lRgCTYerR9FR3mYe2Sa2aU" alt="Lorazepam" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+          <script data-plotly="bethhaworth2180ca:3" sharekey-plotly="lRgCTYerR9FR3mYe2Sa2aU" src="https://plot.ly/embed.js" async></script>
+          <p>Graph demonstrating the most frequently used terms in the Lorazepam data set, after cleaning and preprocessing.</p>
+        </div>
+        <div class="filterDiv lorazepam frequency-cloud">
+          <div class="cloud"><img src="images/loraz.png" style= "max-width: 400px;"></div>
+          <p>Cloud demonstrating the most frequently used terms by Lorazepam patients.</p>
+        </div>   
+    </div>
+    </div>
+  </div>
+
+ <!-- Filter script -->
+
+<script>
+filterSelection("all")
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("filterDiv");
+  if (c == "all") c = "";
+  // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+  for (i = 0; i < x.length; i++) {
+    w3RemoveClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+  }
+}
+
+// Show filtered elements
+function w3AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {
+      element.className += " " + arr2[i];
+    }
+  }
+}
+
+// Hide elements that are not selected
+function w3RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1); 
+    }
+  }
+  element.className = arr1.join(" ");
+}
+
+// Add active class to the current control button (highlight it)
+var btnContainer = document.getElementById("myBtnContainer");
+var btns = btnContainer.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+</script>
+</body>
+</html>
