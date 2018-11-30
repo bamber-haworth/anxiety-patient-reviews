@@ -28,19 +28,34 @@
   <div class= "background">
     <div class="container">
     <div class="header">
-        <h1> Patient Review Dashboard</h1>
-        <h2> Anxiety Medication</h2> <br>
-        <p> What are patients talking about, and what are their perceptions?</p>
+        <h1> Understanding Patients' Attitudes to Drugs</h1>
+        <hr><h2> Summary Dashboard</h2> 
+        <hr><p> What are patients talking about, and what are their perceptions?</p>
         <p> This dashboard includes data from 500 anonymised patient reviews (source: drugs.com), for two frequently prescribed anxiety medications: Lorazepam and Buspirone.</p>
         <p> It also incorporates aggregated global Google search trend data for the period from 2004 to present.</p>
-        <br>
+        <hr>
     </div>
     <!-- Control buttons -->
-    <div id="myBtnContainer">
-        <button class="btn active" onclick="filterSelection('all')"> All drugs</button>
-        <button class="btn" onclick="filterSelection('buspirone')"> Buspirone</button>
-        <button class="btn" onclick="filterSelection('lorazepam')"> Lorazepam</button>
-    </div>
+    <div id="myBtnContainer" class="dropdown">
+        <button id="topbutton" onclick="drop1()" class="btn1">Disease Area</button>
+        <div id="myDropdown1" class="dropdown-content-1">
+            <button class="btn active" onclick="filterSelection('all')"> All</button>
+            <button class="btn" onclick="filterSelection('anxiety')"> Anxiety</button>
+      </div><br><br>
+        <button id="topbutton" onclick="drop2()" class="btn2">Drug</button>
+          <div id="myDropdown2" class="dropdown-content-2">
+              <button class="btn active" onclick="filterSelection('all')"> All</button>
+              <button class="btn" onclick="filterSelection('buspirone')"> Buspirone</button>
+              <button class="btn" onclick="filterSelection('lorazepam')"> Lorazepam</button>
+          </div><br><br>
+        <button id="topbutton" onclick="drop3()" class="btn3">Data Source</button>
+        <div id="myDropdown3" class="dropdown-content-3">
+            <button class="btn active" onclick="filterSelection('all')"> All</button>
+            <button class="btn" onclick="filterSelection('review')"> Patient Reviews</button>
+            <button class="btn" onclick="filterSelection('search')"> Google Search</button>
+        </div><br>
+  </div>
+
     <br>
 
 
@@ -48,33 +63,33 @@
 
 
 
-    <div class="content-container">
-        <div class="filterDiv buspirone frequency-graph">
-          <h3> Buspirone </h3>
+    <div class="container">
+        <div class="filterDiv anxiety buspirone review frequency-graph">
+          <hr><h3> Buspirone </h3>
           <p> This medication is used to treat anxiety. It may help you think more clearly, relax, worry less, and take part in everyday life. It may also help you to feel less jittery and irritable, and may control symptoms such as trouble sleeping, sweating, and pounding heartbeat. Buspirone is a medication for anxiety (anxiolytic) that works by affecting certain natural substances in the brain (neurotransmitters). (Source: webmd)</p>
-          <h4> Patient Reviews </h4>
-          <a href="https://plot.ly/~bethhaworth2180ca/1/?share_key=RD9fN3CI2OeI8fbgegU6zq" target="_blank" title="Buspirone" style="display: block; text-align: center;"><img src="https://plot.ly/~bethhaworth2180ca/1.png?share_key=RD9fN3CI2OeI8fbgegU6zq" alt="Buspirone" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+          <hr><h4> Buspirone Patient Reviews </h4>
+          <a href="https://plot.ly/~bethhaworth2180ca/1/?share_key=RD9fN3CI2OeI8fbgegU6zq" target="_blank" title="Buspirone" style="display: block; text-align: left;"><img src="https://plot.ly/~bethhaworth2180ca/1.png?share_key=RD9fN3CI2OeI8fbgegU6zq" alt="Buspirone" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
             <script data-plotly="bethhaworth2180ca:1" sharekey-plotly="RD9fN3CI2OeI8fbgegU6zq" src="https://plot.ly/embed.js" async></script>
             <p>Graph demonstrating the most frequently used terms in the Buspirone data set, after cleaning and preprocessing.</p>
         </div>   
-        <div class="filterDiv buspirone frequency-cloud">
+        <div class="filterDiv anxiety buspirone review frequency-cloud">
             <div class="cloud"><img src="images/buspi.png" style= "max-width: 400px;"></div>
             <p>Cloud demonstrating the most frequently used terms by Buspirone patients.</p>
         </div>       
-        <div class="filterDiv buspirone search-timeline">
-            <a href="https://plot.ly/~bethhaworth2180ca/5/?share_key=hoaQQudjdyGCN0mRVKjNvv" target="_blank" title="Plot 5" style="display: block; text-align: center;"><img src="https://plot.ly/~bethhaworth2180ca/5.png?share_key=hoaQQudjdyGCN0mRVKjNvv" alt="Plot 5" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+        <div class="filterDiv anxiety buspirone search search-timeline">
+            <hr><h4> Buspirone Google Search Data </h4>
+          <a href="https://plot.ly/~bethhaworth2180ca/5/?share_key=hoaQQudjdyGCN0mRVKjNvv" target="_blank" title="Plot 5" style="display: block; text-align: left;"><img src="https://plot.ly/~bethhaworth2180ca/5.png?share_key=hoaQQudjdyGCN0mRVKjNvv" alt="Plot 5" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
             <script data-plotly="bethhaworth2180ca:5" sharekey-plotly="hoaQQudjdyGCN0mRVKjNvv" src="https://plot.ly/embed.js" async></script>
             <p>Relative frequency of Google searches for the term "Buspirone" worldwide. Covers the period from 2004 to present.</p>
         </div>       
-        <div class="filterDiv buspirone search-geo-table">
-            <h4> Google Search Data </h4>
-          <a href="https://plot.ly/~bethhaworth2180ca/9/?share_key=Qi43xyBbRPUanKEvngiJTT" target="_blank" title="Plot 9" style="display: block; text-align: center;"><img src="https://plot.ly/~bethhaworth2180ca/9.png?share_key=Qi43xyBbRPUanKEvngiJTT" alt="Plot 9" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+        <div class="filterDiv anxiety buspirone search search-geo-table">
+          <a href="https://plot.ly/~bethhaworth2180ca/9/?share_key=Qi43xyBbRPUanKEvngiJTT" target="_blank" title="Plot 9" style="display: block; text-align: left;"><img src="https://plot.ly/~bethhaworth2180ca/9.png?share_key=Qi43xyBbRPUanKEvngiJTT" alt="Plot 9" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
           <script data-plotly="bethhaworth2180ca:9" sharekey-plotly="Qi43xyBbRPUanKEvngiJTT" src="https://plot.ly/embed.js" async></script>
           <br><p>Top ranking countries worldwide for Google searches of Buspirone.</p>
           <p>Dataset demonstrates relative frequency of Google searches for the term "Buspirone" worldwide. Covers the period from 2004 to present.</p>
         </div>      
-        <div class="filterDiv buspirone search-geo-graph">
-          <a href="https://plot.ly/~bethhaworth2180ca/11/?share_key=Xn1k5NvpRGtIgQNAj1OHNf" target="_blank" title="Plot 11" style="display: block; text-align: center;"><img src="https://plot.ly/~bethhaworth2180ca/11.png?share_key=Xn1k5NvpRGtIgQNAj1OHNf" alt="Plot 11" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+        <div class="filterDiv anxiety buspirone search search-geo-graph">
+          <a href="https://plot.ly/~bethhaworth2180ca/11/?share_key=Xn1k5NvpRGtIgQNAj1OHNf" target="_blank" title="Plot 11" style="display: block; text-align: left;"><img src="https://plot.ly/~bethhaworth2180ca/11.png?share_key=Xn1k5NvpRGtIgQNAj1OHNf" alt="Plot 11" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
           <script data-plotly="bethhaworth2180ca:11" sharekey-plotly="Xn1k5NvpRGtIgQNAj1OHNf" src="https://plot.ly/embed.js" async></script>
           <br><p>Ranking of all available countries worldwide for Google searches of Buspirone.</p>
           <p>Dataset demonstrates relative frequency of Google searches for the term "Buspirone" worldwide. Covers the period from 2004 to present.</p>
@@ -85,32 +100,32 @@
 
 
 
-        <div class="filterDiv lorazepam frequency-graph">
-            <h3> Lorazepam </h3>
+        <div class="filterDiv anxiety lorazepam review frequency-graph">
+            <hr><h3> Lorazepam </h3>
             <p> This medication is used to treat anxiety. Lorazepam belongs to a class of drugs known as benzodiazepines which act on the brain and nerves (central nervous system) to produce a calming effect. This drug works by enhancing the effects of a certain natural chemical in the body (GABA). (Source: webmd)</p>
-            <h4> Patient Reviews </h4>
-            <a href="https://plot.ly/~bethhaworth2180ca/3/?share_key=lRgCTYerR9FR3mYe2Sa2aU" target="_blank" title="Lorazepam" style="display: block; text-align: center;"><img src="https://plot.ly/~bethhaworth2180ca/3.png?share_key=lRgCTYerR9FR3mYe2Sa2aU" alt="Lorazepam" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+            <hr><h4> Lorazepam Patient Reviews </h4>
+            <a href="https://plot.ly/~bethhaworth2180ca/3/?share_key=lRgCTYerR9FR3mYe2Sa2aU" target="_blank" title="Lorazepam" style="display: block; text-align: left;"><img src="https://plot.ly/~bethhaworth2180ca/3.png?share_key=lRgCTYerR9FR3mYe2Sa2aU" alt="Lorazepam" style="max-width: 90%;min-width: 90%" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
           <script data-plotly="bethhaworth2180ca:3" sharekey-plotly="lRgCTYerR9FR3mYe2Sa2aU" src="https://plot.ly/embed.js" async></script>
           <p>Graph demonstrating the most frequently used terms in the Lorazepam data set, after cleaning and preprocessing.</p>
         </div>
-        <div class="filterDiv lorazepam frequency-cloud">
+        <div class="filterDiv anxiety lorazepam review frequency-cloud">
           <div class="cloud"><img src="images/loraz.png" style= "max-width: 400px;"></div>
           <p>Cloud demonstrating the most frequently used terms by Lorazepam patients.</p>
         </div>  
-        <div class="filterDiv lorazepam frequency-graph">
-          <a href="https://plot.ly/~bethhaworth2180ca/7/?share_key=xIsOsFR7UbZfpzuDTiZqnn" target="_blank" title="Plot 7" style="display: block; text-align: center;"><img src="https://plot.ly/~bethhaworth2180ca/7.png?share_key=xIsOsFR7UbZfpzuDTiZqnn" alt="Plot 7" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+        <div class="filterDiv anxiety lorazepam search search-timeline">
+            <hr> <h4> Lorazepam Google Search Data </h4>
+          <a href="https://plot.ly/~bethhaworth2180ca/7/?share_key=xIsOsFR7UbZfpzuDTiZqnn" target="_blank" title="Plot 7" style="display: block; text-align: left;"><img src="https://plot.ly/~bethhaworth2180ca/7.png?share_key=xIsOsFR7UbZfpzuDTiZqnn" alt="Plot 7" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
           <script data-plotly="bethhaworth2180ca:7" sharekey-plotly="xIsOsFR7UbZfpzuDTiZqnn" src="https://plot.ly/embed.js" async></script>
           <p>Relative frequency of Google searches for the term "Lorazepam" worldwide. Covers the period from 2004 to present.</p>
         </div>
-        <div class="filterDiv lorazepam search-geo-table">
-          <h4> Google Search Data </h4>
-          <a href="https://plot.ly/~bethhaworth2180ca/13/?share_key=dETTKTTKODgFc70ryYaY98" target="_blank" title="Plot 13" style="display: block; text-align: center;"><img src="https://plot.ly/~bethhaworth2180ca/13.png?share_key=dETTKTTKODgFc70ryYaY98" alt="Plot 13" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+        <div class="filterDiv anxiety lorazepam search search-geo-table">
+          <a href="https://plot.ly/~bethhaworth2180ca/13/?share_key=dETTKTTKODgFc70ryYaY98" target="_blank" title="Plot 13" style="display: block; text-align: left;"><img src="https://plot.ly/~bethhaworth2180ca/13.png?share_key=dETTKTTKODgFc70ryYaY98" alt="Plot 13" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
            <script data-plotly="bethhaworth2180ca:13" sharekey-plotly="dETTKTTKODgFc70ryYaY98" src="https://plot.ly/embed.js" async></script>
           <br><p>Top ranking countries worldwide for Google searches of Lorazepam.</p>
           <p>Dataset demonstrates relative frequency of Google searches for the term "Lorazepam" worldwide. Covers the period from 2004 to present.</p>
         </div>      
-        <div class="filterDiv lorazepam search-geo-graph">
-          <a href="https://plot.ly/~bethhaworth2180ca/15/?share_key=17AxIF6pLGfYerBKyR8gT5" target="_blank" title="Plot 15" style="display: block; text-align: center;"><img src="https://plot.ly/~bethhaworth2180ca/15.png?share_key=17AxIF6pLGfYerBKyR8gT5" alt="Plot 15" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+        <div class="filterDiv anxiety lorazepam search search-geo-graph">
+          <a href="https://plot.ly/~bethhaworth2180ca/15/?share_key=17AxIF6pLGfYerBKyR8gT5" target="_blank" title="Plot 15" style="display: block; text-align: left;"><img src="https://plot.ly/~bethhaworth2180ca/15.png?share_key=17AxIF6pLGfYerBKyR8gT5" alt="Plot 15" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
           <script data-plotly="bethhaworth2180ca:15" sharekey-plotly="17AxIF6pLGfYerBKyR8gT5" src="https://plot.ly/embed.js" async></script>
           <br><p>Ranking of all available countries worldwide for Google searches of Lorazepam.</p>
           <p>Dataset demonstrates relative frequency of Google searches for the term "Lorazepam" worldwide. Covers the period from 2004 to present.</p>
@@ -128,6 +143,17 @@
  <!-- Filter script -->
 
 <script>
+function drop1() {
+  document.getElementById("myDropdown1").classList.toggle("show");
+}
+function drop2() {
+  document.getElementById("myDropdown2").classList.toggle("show");
+}
+function drop3() {
+  document.getElementById("myDropdown3").classList.toggle("show");
+}
+
+
 filterSelection("all")
 function filterSelection(c) {
   var x, i;
