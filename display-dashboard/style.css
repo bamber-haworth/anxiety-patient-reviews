@@ -52,6 +52,8 @@
 
 .cloud {
   width: 200px;
+  padding-left: 80px;
+  padding-bottom: 15px;
 }
 
 p {
@@ -60,4 +62,10 @@ p {
 
 h3 {
   text-align: left;
+}
+
+h4 {
+  text-align: left;
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
